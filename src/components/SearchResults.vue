@@ -30,11 +30,6 @@
 <script>
 
 export default {
-  data () {
-      return {
-          artistss: Object
-      }
-  },
   props: {
       artists: {
           type: Object
