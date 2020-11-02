@@ -7,7 +7,7 @@
             </div>
             <div class="search-input">
                 <img @click="searchApi(this.query)" class="search-icon" src="../assets/icons/search-icon.png">
-                <input type="search" v-model="query" @focus="onFocus" @blur="onBlur" @keyup.enter="enteredQuery()" placeholder="Search artists, tracks or albums">
+                <input type="search" v-model="query" @focus="onFocus" @keyup.enter="enteredQuery()" placeholder="Search artists, tracks or albums">
             </div>
             <div class="recommended-genres">
                 <transition name="block">

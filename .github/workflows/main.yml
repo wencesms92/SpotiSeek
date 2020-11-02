@@ -36,4 +36,4 @@ jobs:
         with:
           args: deploy --only hosting:SpotiSeek
         env:
-          FIREBASE_TOKEN: 1//03ylNKa3K71JjCgYIARAAGAMSNwF-L9IrasOhFR8PIy5aU0rSFnZig86iy6S_rBx2bdp68dfDmOJgDzW3GjpVFMlf6m2q-zBThi8
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SPOTISEEK }}
