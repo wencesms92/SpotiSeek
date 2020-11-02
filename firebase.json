@@ -1,6 +1,5 @@
 {
   "hosting": {
-    "site": "spotiseek",
     "public": "dist",
     "ignore": [
       "firebase.json",
