@@ -1,11 +1,21 @@
 <template>
   <div class="search-component">
-      <input type="search" v-model="query" @focus="onFocus" @blur="onBlur" @keyup.enter="enteredQuery()" placeholder="Search artits, tracks or albums">
-      <div class="recommended-genres">
-          <transition name="block">
-            <recommended-genres-component @recommended-genre-value="sendGenreSelect" v-show="this.show_genres"></recommended-genres-component>
-          </transition>
-      </div>
+      <section>
+          <div class="search-width">
+            <div class="title-section">
+                <h3> What you'd like to listen today?</h3>
+            </div>
+            <div class="search-input">
+                <input type="search" v-model="query" @focus="onFocus" @blur="onBlur" @keyup.enter="enteredQuery()" placeholder="Search artists, tracks or albums">
+                <img @click="searchApi(this.query)" class="search-icon" src="../assets/icons/search-yellow.png">
+            </div>
+            <div class="recommended-genres">
+                <transition name="block">
+                    <recommended-genres-component  @recommended-genre-value="sendGenreSelect" v-show="this.show_genres"></recommended-genres-component>
+                </transition>
+            </div>
+          </div>
+      </section>
   </div>
 </template>
 
@@ -35,11 +45,11 @@ export default {
                 }
            }
            //HTTP GET request with AXIOS
-           axios.get('https://api.spotify.com/v1/search?q=' + event + '&type=track,album,artist&limit=5', config).then(async response => {
+           axios.get('https://api.spotify.com/v1/search?q=' + event + '&type=track,album,artist&limit=6', config).then(async response => {
                // GET request returned results so we emit an event to send it to SearchResults Component
                this.$emit('no-show-results', true);
                this.$emit('search-results', response.data);
-               this.show_genres = true;
+               this.show_genres = false;
                this.getRecommendedItems(response.data)
            }).catch(error => {
                //Setting the error handler in case that the API returns an error
@@ -73,7 +83,6 @@ export default {
            })
       },
       getRecommendedItems(data) {
-          console.log('llego aqui')
           const artist_id = (data.artists.items[0].id) ? data.artists.items[0].id : false;
           if (artist_id != false) {
                 const getTokenFromApi = this.getApiToken().then(result => {
@@ -84,7 +93,7 @@ export default {
                     }
                 }   
            //HTTP GET request with AXIOS
-           axios.get('https://api.spotify.com/v1/recommendations?seed_artists=' + artist_id + '&limit=5', config).then(async response => {
+           axios.get('https://api.spotify.com/v1/recommendations?seed_artists=' + artist_id + '&limit=6', config).then(async response => {
                // GET request returned results so we emit an event to send it to SearchResults Component
                if (response.data.tracks.length > 0) {
                    this.$emit('search-recommendations', response.data);
@@ -103,50 +112,97 @@ export default {
         }
         },
         sendGenreSelect(data) {
-            this.searchApi(data)
+            this.searchApi(data);
+            this.show_genres = false;
         },
         onFocus() {
+            console.log('Lmao');
             this.show_genres = true;
         },
         onBlur() {
-            this.show_genres = false;
+            console.log('Lmao2');
+            //this.show_genres = false;
       }
   },
   watch: {
       //Everytime we type in the search input, the query entered will be used to
       //make a request to de API, with a delay of 0.4s
-      query: debounce(function () {
-          this.searchApi(this.query)
-      }, 400)
+      query:  debounce(function () {
+          if (this.query.length >= 2) {              
+            this.searchApi(this.query);
+            this.show_genres = false;
+          }
+      }, 200)
   },
   emits: [
       'search-results',
-      'search-recommendations'
+      'search-recommendations',
+      'no-show-recomendations'
   ]
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-header {
-  background: #000;
-  width: 100%;
-  height: 70px;
-  max-height: 70px;
-  
+.search-component {
+    font-family: 'Roboto Regular';
+    font-weight: 300;
+    line-height: 1.5em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px;
 }
-header > div {
-  width: 100%;
-  height: 100%;
-  text-align:center; 
-  display:table;
+.search-component > section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
 }
-header > div > h1 {
-  display: table-cell;
-  vertical-align: middle;
-  margin-block-start: 0px;
-  margin-block-end: 0px;
-  color: #fff;
+.search-component > section > .search-width {
+    display: grid;
+}
+.search-component > section > .search-width > .title-section {
+    margin: 20px 0px;
+}
+.search-component > section > .search-width > .search-input {
+    margin: 20px 0px;
+    border-bottom: 3px solid #fff;
+}
+.search-component .title-section h3 {
+    margin: 20px 0px;
+}
+.search-component .title-section h3 {
+    font-family: 'Roboto Regular';
+    font-weight: 300;
+    line-height: 1.5em;
+    color: #fff;
+    font-size: 45px;
+}
+.search-component > section .search-input > input {
+    height: 50px;
+    width: 560px;
+    border: none;
+    background: none;
+    outline: none;
+    color: #fff;
+    font-size: 24px;
+}
+.search-component > section .search-input > .search-icon {
+    width: 29px;
+    margin-bottom: -5px;
+    cursor: pointer;
+}
+input::placeholder {
+    color: #fff;
+    font-size: 24px;
+}
+::-webkit-search-cancel-button {
+    display: none!important;
+}
+.recommended-genres {
+    width: 100%;
 }
 .block-enter-active {
     animation: block-in 0.3s ease-in;

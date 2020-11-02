@@ -1,16 +1,17 @@
 <template>
   <header-component></header-component>
-  <search-component
-    @search-results="sendSearchResults"
-    @search-recommendations="sendRecommendationsResults" 
-    @no-show-results="showSearchResults"
-    @no-show-recomendations="showRecommendationsResults">
-  </search-component>
-  <transition name="block">
-    <search-results-component v-show="this.show_data" v-bind:artists="this.artists" v-bind:tracks="this.tracks" v-bind:albums="this.albums"></search-results-component>
-  </transition>
-  <recommended-items-component v-show="this.show_recommendations && this.show_data" v-bind:recommended_tracks="this.recommended_tracks"></recommended-items-component>
-  
+  <div class="main-container">
+    <search-component
+      @search-results="sendSearchResults"
+      @search-recommendations="sendRecommendationsResults" 
+      @no-show-results="showSearchResults"
+      @no-show-recomendations="showRecommendationsResults">
+    </search-component>
+    <transition name="block">
+      <search-results-component v-show="this.show_data" v-bind:artists="this.artists" v-bind:tracks="this.tracks" v-bind:albums="this.albums"></search-results-component>
+    </transition>
+    <recommended-items-component v-show="this.show_recommendations && this.show_data" v-bind:recommended_tracks="this.recommended_tracks"></recommended-items-component>
+  </div>
 </template>
 
 <script>
@@ -30,12 +31,14 @@ export default {
     sendSearchResults(data) {
       //This method will execute when the event 'search-results' from the Search component emits
       // Parsing all the data coming from the event to the props variables >> SearchResults components
+      console.log('Data: ', data)
       this.artists = data.artists
       this.tracks = data.tracks
       this.albums = data.albums
     },
     sendRecommendationsResults(data) {
       //Sending the recommended data from the API to the RecommendedItems Component:
+      console.log('Recommended:', data);
       this.recommended_tracks = data
     },
     showSearchResults(data){
@@ -53,20 +56,48 @@ export default {
 </script>
 
 <style>
+@import './assets/styles/variables.css';
+
+/* Adding Fonts*/
+@font-face {
+  font-family: "Roboto Light";
+  src: local("Roboto Light"),
+  url("./assets/fonts/RobotoCondensed-Light.ttf");
+}
+@font-face {
+  font-family: "Roboto Regular";
+  src: local("Roboto Regular"),
+  url("./assets/fonts/RobotoCondensed-Regular.ttf");
+}
+@font-face {
+  font-family: "Roboto Bold";
+  src: local("Roboto Bold"),
+  url("./assets/fonts/RobotoCondensed-Bold.ttf");
+}
+@font-face {
+  font-family: "Roboto Italic";
+  src: local("Roboto Italic"),
+  url("./assets/fonts/RobotoCondensed-Italic.ttf");
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto Regular';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: var(--secondary-color);
+  background-color:  var(--primary-color);
+  height: 100vh;
+  width: 100%;
+  overflow: auto;
+  overflow-x: hidden;
 }
 body { 
   margin: 0px!important;
 }
 .main-container {
   width: 100%;
-  background: rgb(31,81,128);
-  height: 100vh;
+  max-width: 1190px;
+  margin: 0 auto;
 }
 .block-enter-active {
     animation: block 0.3s ease-in;
