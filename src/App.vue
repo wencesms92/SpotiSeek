@@ -1,4 +1,5 @@
 <template>
+<div>
   <header-component></header-component>
   <div class="main-container">
     <search-component
@@ -8,10 +9,28 @@
       @no-show-recomendations="showRecommendationsResults">
     </search-component>
     <transition name="block">
-      <search-results-component v-show="this.show_data" v-bind:artists="this.artists" v-bind:tracks="this.tracks" v-bind:albums="this.albums"></search-results-component>
+      <search-results-component v-show="this.show_data && this.show_data != undefined" v-bind:artists="this.artists" v-bind:tracks="this.tracks" v-bind:albums="this.albums"></search-results-component>
+    </transition>
+    <transition name="block">
+        <div class="no-results" v-show="!this.show_data && this.show_data != undefined">
+          <div class="no-results-section">
+            <div class="image-container">
+              <img src="./assets/icons/error.png">
+            </div>
+            <div class="message-container">
+              <h3>Whoops! We couldn't find any matches</h3>
+              <p>Try again!</p>
+            </div>              
+          </div>
+        </div>
     </transition>
     <recommended-items-component v-show="this.show_recommendations && this.show_data" v-bind:recommended_tracks="this.recommended_tracks"></recommended-items-component>
+    <transition name="block">
+        <trending-items-component></trending-items-component>
+    </transition>
   </div>
+  <footer-component></footer-component>
+</div>
 </template>
 
 <script>
@@ -23,14 +42,14 @@ export default {
       tracks: [],
       albums: [],
       recommended_tracks: [],
-      show_data: false,
+      show_data: undefined,
       show_recommendations: false
     }
   },
   methods: {
     sendSearchResults(data) {
-      //This method will execute when the event 'search-results' from the Search component emits
-      // Parsing all the data coming from the event to the props variables >> SearchResults components
+      // - This method will execute when the event 'search-results' from the Search component arrives
+      // - Parsing all the data coming from the event to the props variables >> SearchResults component
       console.log('Data: ', data)
       this.artists = data.artists
       this.tracks = data.tracks
@@ -44,6 +63,7 @@ export default {
     showSearchResults(data){
       //This method will trigger when the HTTP Request to the API fails, in order to
       //hide the SearchResults component.
+      console.log('No mostramos...');
       this.show_data = data
     },
     showRecommendationsResults(data){
@@ -111,5 +131,30 @@ body {
         opacity: 1;
         transform: scale(1)
     }
+}
+.no-results-section {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 70px 0px;
+}
+.no-results-section > .image-container {
+  width: 100%;
+  text-align: center;
+}
+.no-results-section > .image-container > img {
+  width: 180px;
+}
+.no-results-section > .message-container {
+  width: 100%;
+  text-align: center; 
+}
+.no-results-section > .message-container > h3{
+      font-size: 30px;
+    font-family: 'Roboto Regular';
+}
+.no-results-section > .message-container > p {
+      font-size: 25px;
+    font-family: 'Roboto Light';
 }
 </style>

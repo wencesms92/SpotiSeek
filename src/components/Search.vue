@@ -6,8 +6,8 @@
                 <h3> What you'd like to listen today?</h3>
             </div>
             <div class="search-input">
+                <img @click="searchApi(this.query)" class="search-icon" src="../assets/icons/search-icon.png">
                 <input type="search" v-model="query" @focus="onFocus" @blur="onBlur" @keyup.enter="enteredQuery()" placeholder="Search artists, tracks or albums">
-                <img @click="searchApi(this.query)" class="search-icon" src="../assets/icons/search-yellow.png">
             </div>
             <div class="recommended-genres">
                 <transition name="block">
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+//Importing libraries
 import axios from "axios";
 import { debounce } from "debounce";
 
@@ -65,7 +66,7 @@ export default {
           })
       },
       getApiToken(){
-          //Spotify credentials
+          //Spotify public credentials
           const clientId = 'd68f5e987d004caa98426cdc9dc76664'
           const clientSecret = '20a325df35a64581a782a23d2d9b7878'
           //Setting the POST request headers and body 
@@ -116,23 +117,18 @@ export default {
             this.show_genres = false;
         },
         onFocus() {
-            console.log('Lmao');
             this.show_genres = true;
-        },
-        onBlur() {
-            console.log('Lmao2');
-            //this.show_genres = false;
-      }
+        }
   },
   watch: {
       //Everytime we type in the search input, the query entered will be used to
-      //make a request to de API, with a delay of 0.4s
+      //make a request to de API, with a delay of 0.3s
       query:  debounce(function () {
           if (this.query.length >= 2) {              
             this.searchApi(this.query);
             this.show_genres = false;
           }
-      }, 200)
+      }, 300)
   },
   emits: [
       'search-results',
@@ -162,13 +158,15 @@ export default {
 }
 .search-component > section > .search-width {
     display: grid;
+    width: 63%;
 }
 .search-component > section > .search-width > .title-section {
     margin: 20px 0px;
 }
 .search-component > section > .search-width > .search-input {
     margin: 20px 0px;
-    border-bottom: 3px solid #fff;
+    background: #ffffffdb;
+    border-radius: 30px;
 }
 .search-component .title-section h3 {
     margin: 20px 0px;
@@ -176,30 +174,32 @@ export default {
 .search-component .title-section h3 {
     font-family: 'Roboto Regular';
     font-weight: 300;
-    line-height: 1.5em;
+    line-height: 1em;
     color: #fff;
     font-size: 45px;
 }
 .search-component > section .search-input > input {
     height: 50px;
-    width: 560px;
+    width: 545px;
     border: none;
     background: none;
     outline: none;
-    color: #fff;
+    color: var(--terciary-color);
     font-size: 24px;
 }
 .search-component > section .search-input > .search-icon {
     width: 29px;
     margin-bottom: -5px;
     cursor: pointer;
+    margin: -6px 10px;
 }
 input::placeholder {
-    color: #fff;
+    color: #475c7a99;
     font-size: 24px;
 }
 ::-webkit-search-cancel-button {
-    display: none!important;
+    margin-right: 10px;
+    cursor: pointer;
 }
 .recommended-genres {
     width: 100%;

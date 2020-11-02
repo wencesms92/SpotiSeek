@@ -39,8 +39,25 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
+.results-section {
+    margin: 40px 0px 55px 0px;
+}
+.results-section .section-title {
+    font-size: 24px!important;
+    font-family: 'Roboto Regular';
+    margin: 30px 0px;
+        text-align: center;
+}
+.results-section .section-title > h2{
+    color: var(--primary-color);
+    background: var(--secondary-color);
+    margin: 0 auto;
+    text-align: center;
+    display: inline-block;
+    padding: 0px 10px;
+}
 .recommended-items-component > .results-section .section-container {
     display: flex;
     flex-wrap: wrap;

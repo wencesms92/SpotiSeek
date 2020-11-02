@@ -30,8 +30,8 @@
                             <img src="../assets/icons/song.png">
                         </div>
                         <div class="info">
-                            <a :href="track.href" @click="openLink(track.external_urls.spotify)">{{track.name}}</a>
-                            <a :href="track.artists[0].external_urls.spotify" v-if="Object.keys(track.artists).length == 1">by {{ track.artists[0].name }} </a>
+                            <a :href="track.external_urls.spotify">{{track.name}}</a>
+                            <a :href="track.artists[0].external_urls.spotify" v-if="Object.keys(track.artists).length === 1">by {{ track.artists[0].name }} </a>
                             <a :href="track.artists[0].external_urls.spotify" v-if="Object.keys(track.artists).length > 1">by {{ track.artists[0].name }}, {{ track.artists[1].name }}  </a>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                             <img src="../assets/icons/album.png">
                         </div>
                         <div class="info">
-                            <a class="" :href="album.href" @click="openLink(track.external_urls.spotify)">{{album.name}}</a>
+                            <a class="" :href="album.external_urls.spotify">{{album.name}}</a>
                             <a class="" :href="album.artists[0].external_urls.spotify" v-if="Object.keys(album.artists).length == 1">by {{ album.artists[0].name }} </a>
                             <a class="" :href="album.artists[0].external_urls.spotify" v-if="Object.keys(album.artists).length > 1">by {{ album.artists[0].name }}, {{ album.artists[1].name }}  </a>
                         </div>
@@ -92,24 +92,25 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.search-results-component h2{
-    color: var(--primary-color);
-    background: var(--secondary-color);
-    width: 300px;
-    margin: 0 auto;
-    text-align: center;
-}
-.search-results-component > .results-section {
-    margin: 40px 0px;
+.results-section {
+    margin: 40px 0px 55px 0px;
     text-align: left;
+    
 }
-.search-results-component > .results-section .section-title {
-    color: var(--accent-color);
+.results-section .section-title {
     font-size: 24px!important;
     font-family: 'Roboto Regular';
-    margin: 50px 0px;
+    margin: 30px 0px;
+        text-align: center;
+}
+.results-section .section-title > h2{
+    color: var(--primary-color);
+    background: var(--secondary-color);
+    display: inline-block;
+    padding: 0px 10px;
+    margin: 0 auto;
+    text-align: center;
 }
 .search-results-component > .results-section .section-container {
     display: flex;
@@ -214,7 +215,7 @@ export default {
 }
 .search-results-component > .results-section .section-container .item .header > .info > a:nth-child(2) {
     width: 100%;
-    font-size: 16px;
+    font-size: 18px;
     font-family: 'Roboto Light';
     text-decoration: none;
     color: #fff;

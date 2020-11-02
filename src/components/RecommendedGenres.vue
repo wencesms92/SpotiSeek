@@ -1,5 +1,5 @@
 <template>
-  <div class="recommended-genres-component">
+  <div class="recommended-genres-component" v-show="this.show_genres">
           <div class="genres-item" v-for="(item,x) in this.recommended_genres" :key="x" @click="selectedGenre(item)">
               <p>#</p>
               <p v-bind:value="item">{{item}}</p>
@@ -16,7 +16,8 @@ import axios from "axios";
 export default {
   data () {
       return {
-          recommended_genres: []
+          recommended_genres: [],
+          show_genres: false
       }
   },
   methods: {
@@ -32,23 +33,25 @@ export default {
            //HTTP GET request with AXIOS
            axios.get('https://api.spotify.com/v1/recommendations/available-genre-seeds', config).then(async response => {
                // GET request returned results so we can show some random genres to the user
-
                const genre_array = new Array;
+               const response_length = response.data.genres.length;
                for (var i = 0; i < 9; i++) {
-                   const random_genres = parseInt(Math.random() * (115 - 1) + 1);
-                   console.log(response.data.genres[random_genres])
+                   const random_genres = parseInt(Math.random() * (response_length) + 1);
                    genre_array.push(response.data.genres[random_genres]);
                }
                this.recommended_genres = genre_array;
+               this.show_genres = true;
            }).catch(error => {
                //Setting the error handler in case that the API returns an error
                // Emitting an event in this case to know that we can't display results
                 this.$emit('no-genre-recommendations', false);
+                this.show_genres = false;
             })
           }).catch(error => {
               //Setting the error handler in case that the API returns an error when getting the access_token
               // Emitting an event in this case to know that we can't display results
               this.$emit('no-genre-recommendations', false);
+              this.show_genres = false;
           })
       },
       getApiToken(){
@@ -70,8 +73,7 @@ export default {
            })
       },
       selectedGenre(event) {
-          //Emitting the event which sends the genre selected to the user and will show the results throught Searh Component
-          console.log(event);
+          //Emitting the event which sends the genre selected to the user and will show the results throught Searh Component template
           this.$emit('recommended-genre-value', event);
       }
   },
@@ -121,7 +123,7 @@ export default {
     width: 100%;
 }
 .recommended-genres-component .refresh-button > img {
-    width: 28px;
+    width: 25px;
     transition: transform 0.4s linear;
 }
 .recommended-genres-component .refresh-button > img.rotate {
