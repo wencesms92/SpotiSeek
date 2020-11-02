@@ -32,13 +32,9 @@ export default {
       }
   },
   methods: {
-      enteredQuery(){
-          //Test method
-          console.log('Llegamos!');
-          if (this.query.length >= 2) {              
+      enteredQuery(){              
             this.searchApi(this.query)
             this.show_genres = false
-          }
       },
       searchApi(event){
           // Calling Spotify API for the first time in order to get the access_token
@@ -129,8 +125,8 @@ export default {
       //make a request to de API, with a delay of 0.3s
       query:  debounce(function () {
           if (this.query.length >= 2) {              
-            // this.searchApi(this.query)
-            // this.show_genres = false
+            this.searchApi(this.query)
+            this.show_genres = false
           }
       }, 300)
   },
@@ -142,96 +138,3 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.search-component {
-    font-family: 'Roboto Regular';
-    font-weight: 300;
-    line-height: 1.5em;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 20px 0px;
-}
-.search-component > section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-}
-.search-component > section > .search-width {
-    display: grid;
-    width: 63%;
-}
-.search-component > section > .search-width > .title-section {
-    margin: 20px 0px;
-}
-.search-component > section > .search-width > .search-input {
-    margin: 20px 0px;
-    background: #ffffffdb;
-    border-radius: 30px;
-}
-.search-component .title-section h3 {
-    margin: 20px 0px;
-}
-.search-component .title-section h3 {
-    font-family: 'Roboto Regular';
-    font-weight: 300;
-    line-height: 1em;
-    color: #fff;
-    font-size: 45px;
-}
-.search-component > section .search-input > input {
-    height: 50px;
-    width: 545px;
-    border: none;
-    background: none;
-    outline: none;
-    color: var(--terciary-color);
-    font-size: 24px;
-}
-.search-component > section .search-input > .search-icon {
-    width: 29px;
-    margin-bottom: -5px;
-    cursor: pointer;
-    margin: -6px 10px;
-}
-input::placeholder {
-    color: #475c7a99;
-    font-size: 24px;
-}
-::-webkit-search-cancel-button {
-    margin-right: 10px;
-    cursor: pointer;
-}
-.recommended-genres {
-    width: 100%;
-}
-.block-enter-active {
-    animation: block-in 0.3s ease-in;
-}
-.block-leave-to {
-  animation: block-out 0.5s ease-out;
-}
-@keyframes block-in {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1)
-    }
-}
-@keyframes block-out {
-    from {
-        opacity: 1;
-        transform: scale(1);
-    }
-    to {
-        opacity: 0;
-        transform: scale(0.9)
-    }
-}
-</style>

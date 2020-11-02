@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="app-container">
   <header-component></header-component>
   <div class="main-container">
     <search-component
@@ -38,10 +38,10 @@
 export default {
   data() {
     return {
-      artists: [],
-      tracks: [],
-      albums: [],
-      recommended_tracks: [],
+      artists: '',
+      tracks: '',
+      albums: '',
+      recommended_tracks: '',
       show_data: undefined,
       show_recommendations: false
     }
@@ -77,84 +77,6 @@ export default {
 
 <style>
 @import './assets/styles/variables.css';
+@import './assets/styles/main.css';
 
-/* Adding Fonts*/
-@font-face {
-  font-family: "Roboto Light";
-  src: local("Roboto Light"),
-  url("./assets/fonts/RobotoCondensed-Light.ttf");
-}
-@font-face {
-  font-family: "Roboto Regular";
-  src: local("Roboto Regular"),
-  url("./assets/fonts/RobotoCondensed-Regular.ttf");
-}
-@font-face {
-  font-family: "Roboto Bold";
-  src: local("Roboto Bold"),
-  url("./assets/fonts/RobotoCondensed-Bold.ttf");
-}
-@font-face {
-  font-family: "Roboto Italic";
-  src: local("Roboto Italic"),
-  url("./assets/fonts/RobotoCondensed-Italic.ttf");
-}
-#app {
-  font-family: 'Roboto Regular';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: var(--secondary-color);
-  background-color:  var(--primary-color);
-  height: 100vh;
-  width: 100%;
-  overflow: auto;
-  overflow-x: hidden;
-}
-body { 
-  margin: 0px!important;
-}
-.main-container {
-  width: 100%;
-  max-width: 1190px;
-  margin: 0 auto;
-}
-.block-enter-active {
-    animation: block 0.3s ease-in;
-}
-@keyframes block {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1)
-    }
-}
-.no-results-section {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  margin: 70px 0px;
-}
-.no-results-section > .image-container {
-  width: 100%;
-  text-align: center;
-}
-.no-results-section > .image-container > img {
-  width: 180px;
-}
-.no-results-section > .message-container {
-  width: 100%;
-  text-align: center; 
-}
-.no-results-section > .message-container > h3{
-      font-size: 30px;
-    font-family: 'Roboto Regular';
-}
-.no-results-section > .message-container > p {
-      font-size: 25px;
-    font-family: 'Roboto Light';
-}
 </style>

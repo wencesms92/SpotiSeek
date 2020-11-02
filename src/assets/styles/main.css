@@ -1,0 +1,1249 @@
+/* Styles for AppComponent */
+/* Adding Fonts*/
+@font-face {
+    font-family: "Roboto Light";
+    src: local("Roboto Light"),
+    url("../fonts/RobotoCondensed-Light.ttf");
+  }
+  @font-face {
+    font-family: "Roboto Regular";
+    src: local("Roboto Regular"),
+    url("../fonts/RobotoCondensed-Regular.ttf");
+  }
+  @font-face {
+    font-family: "Roboto Bold";
+    src: local("Roboto Bold"),
+    url("../fonts/RobotoCondensed-Bold.ttf");
+  }
+  @font-face {
+    font-family: "Roboto Italic";
+    src: local("Roboto Italic"),
+    url("../fonts/RobotoCondensed-Italic.ttf");
+  }
+  .app-container {
+    font-family: 'Roboto Regular';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: var(--secondary-color);
+    background-color:  var(--primary-color);
+    height: 100vh;
+    width: 100%;
+    overflow: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  body { 
+    margin: 0px!important;
+  }
+  .main-container {
+    width: 100%;
+    max-width: 1190px;
+    margin: 0 auto;
+  }
+  .block-enter-active {
+      animation: block 0.3s ease-in;
+  }
+  @keyframes block {
+      from {
+          opacity: 0;
+          transform: scale(0.9);
+      }
+      to {
+          opacity: 1;
+          transform: scale(1)
+      }
+  }
+  .no-results-section {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 70px 0px;
+  }
+  .no-results-section > .image-container {
+    width: 100%;
+    text-align: center;
+  }
+  .no-results-section > .image-container > img {
+    width: 180px;
+  }
+  .no-results-section > .message-container {
+    width: 100%;
+    text-align: center; 
+  }
+  .no-results-section > .message-container > h3{
+        font-size: 30px;
+      font-family: 'Roboto Regular';
+  }
+  .no-results-section > .message-container > p {
+        font-size: 25px;
+      font-family: 'Roboto Light';
+  }
+
+  /* END styles for AppComponent */
+
+  /* Styles for SearchComponent*/
+  .search-component {
+    font-family: 'Roboto Regular';
+    font-weight: 300;
+    line-height: 1.5em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px;
+}
+.search-component > section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+.search-component > section > .search-width {
+    display: grid;
+    width: 63%;
+}
+.search-component > section > .search-width > .title-section {
+    margin: 20px 0px;
+}
+.search-component > section > .search-width > .search-input {
+    margin: 20px 0px;
+    background: #ffffffdb;
+    border-radius: 30px;
+}
+.search-component .title-section h3 {
+    margin: 20px 0px;
+}
+.search-component .title-section h3 {
+    font-family: 'Roboto Regular';
+    font-weight: 300;
+    line-height: 1em;
+    color: #fff;
+    font-size: 45px;
+}
+.search-component > section .search-input > input {
+    height: 50px;
+    width: 545px;
+    border: none;
+    background: none;
+    outline: none;
+    color: var(--terciary-color);
+    font-size: 24px;
+}
+.search-component > section .search-input > .search-icon {
+    width: 29px;
+    margin-bottom: -5px;
+    cursor: pointer;
+    margin: -6px 10px;
+}
+input::placeholder {
+    color: #475c7a99;
+    font-size: 24px;
+}
+::-webkit-search-cancel-button {
+    margin-right: 10px;
+    cursor: pointer;
+}
+.recommended-genres {
+    width: 100%;
+}
+.block-enter-active {
+    animation: block-in 0.3s ease-in;
+}
+.block-leave-to {
+  animation: block-out 0.5s ease-out;
+}
+@keyframes block-in {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1)
+    }
+}
+@keyframes block-out {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.9)
+    }
+}
+/*END styles for SearchComponent*/
+
+/* Styles for SearchResults Component */
+.results-section {
+    margin: 40px 0px 55px 0px;
+    text-align: left;
+    
+}
+.results-section .section-title {
+    font-size: 24px!important;
+    font-family: 'Roboto Regular';
+    margin: 30px 0px;
+        text-align: center;
+}
+.results-section .section-title > h2{
+    color: var(--primary-color);
+    background: var(--secondary-color);
+    display: inline-block;
+    padding: 0px 10px;
+    margin: 0 auto;
+    text-align: center;
+}
+.search-results-component > .results-section .section-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: flex-center;
+}
+.search-results-component > .results-section .section-container .artist-item {
+    text-align: center;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease-in;
+}
+.search-results-component > .results-section .section-container .artist-item:hover {
+        transform: scale(1.05);
+}
+.search-results-component > .results-section .section-container .top-artist{
+    width: 33%;
+}
+.search-results-component > .results-section .section-container .top-artist > .artist-img > img {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;    
+    cursor: pointer;
+    box-shadow: 1px 1px 20px 0px #00000061;
+}
+.search-results-component > .results-section .section-container .top-artist > .artist-name {
+    margin-top: 13px;
+}
+.search-results-component > .results-section .section-container .top-artist > .artist-name > a {
+    font-size: 25px;
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Roboto Regular';
+}
+.search-results-component > .results-section .section-container .other-artist{
+    width: 33%;
+}
+.search-results-component > .results-section .section-container .other-artist > .artist-img > img {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    cursor: pointer;
+    box-shadow: 1px 1px 20px 0px #00000061;
+}
+.search-results-component > .results-section .section-container .other-artist > .artist-name {
+    margin-top: 13px;
+}
+.search-results-component > .results-section .section-container .other-artist > .artist-name > a {
+    font-size: 20px;
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Roboto Light';
+    cursor: pointer;
+}
+.search-results-component > .results-section .section-container .artist-item > .artist-followers >  p {
+    font-size: 15px;
+    text-decoration: none;
+    color: var(--secondary-color); 
+    font-family: 'Roboto Italic';
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+/* Tracks and albums GRID LAYOUT*/
+.search-results-component > .results-section .section-container .item {
+    display: flex;
+    flex-wrap: wrap;
+    width: 31%;
+    background: var(--terciary-color);
+    justify-content: center;
+    margin: 20px 10px;
+    cursor: pointer;
+    position: relative;
+    flex-direction: column;
+}
+.search-results-component > .results-section .section-container .item .header {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.search-results-component > .results-section .section-container .item .header > .icon {
+    width: 40px;
+    padding: 25px 5px 0px 36px;
+    height: 42px;
+}
+.search-results-component > .results-section .section-container .item .header > .icon > img {
+    width: 35px;
+}
+.search-results-component > .results-section .section-container .item .header > .info {
+    width: 70%;
+    display: grid;
+    margin-top: 5px;
+    align-items: center;
+}
+.search-results-component > .results-section .section-container .item .header > .info > a:nth-child(1) {
+    width: 100%;
+    font-size: 20px;
+    font-family: 'Roboto Regular';
+    text-decoration: none;
+    color: #fff;
+    margin: 15px 15px 0px 15px;
+}
+.search-results-component > .results-section .section-container .item .header > .info > a:nth-child(2) {
+    width: 100%;
+    font-size: 18px;
+    font-family: 'Roboto Light';
+    text-decoration: none;
+    color: #fff;
+    margin: 0px 15px 15px 15px;
+}
+.search-results-component > .results-section .section-container .item .image {
+    width: 100%;
+    margin: 10px 0px 20px 0px;
+    position: relative;
+    text-align: center;
+}
+.search-results-component > .results-section .section-container .item .image > img{
+    width: 80%;
+}
+.search-results-component > .results-section .section-container .item > iframe {
+    margin-top: auto;
+}
+/* END SearchResults Component */
+
+/* Styles for RecommendedItems */
+.results-section {
+    margin: 40px 0px 55px 0px;
+}
+.results-section .section-title {
+    font-size: 24px!important;
+    font-family: 'Roboto Regular';
+    margin: 30px 0px;
+        text-align: center;
+}
+.results-section .section-title > h2{
+    color: var(--primary-color);
+    background: var(--secondary-color);
+    margin: 0 auto;
+    text-align: center;
+    display: inline-block;
+    padding: 0px 10px;
+}
+.recommended-items-component > .results-section .section-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: flex-center;
+}
+.recommended-items-component > .results-section .section-container .item {
+    display: flex;
+    flex-wrap: wrap;
+    width: 31%;
+    background: var(--terciary-color);
+    justify-content: center;
+    margin: 20px 10px;
+    cursor: pointer;
+    position: relative;
+    flex-direction: column;
+}
+.recommended-items-component > .results-section .section-container .item .header {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.recommended-items-component > .results-section .section-container .item .header > .icon {
+    width: 40px;
+    padding: 25px 5px 0px 36px;
+    height: 42px;
+}
+.recommended-items-component > .results-section .section-container .item .header > .icon > img {
+    width: 35px;
+}
+.recommended-items-component > .results-section .section-container .item .header > .info {
+    width: 70%;
+    display: grid;
+    margin-top: 5px;
+    align-items: center;
+}
+.recommended-items-component > .results-section .section-container .item .header > .info > a:nth-child(1) {
+    width: 100%;
+    font-size: 20px;
+    font-family: 'Roboto Regular';
+    text-decoration: none;
+    color: #fff;
+    margin: 15px 15px 0px 15px;
+    text-align: left;
+}
+.recommended-items-component > .results-section .section-container .item .header > .info > a:nth-child(2) {
+    width: 100%;
+    font-size: 16px;
+    font-family: 'Roboto Light';
+    text-decoration: none;
+    color: #fff;
+    margin: 0px 15px 15px 15px;
+    text-align: left;
+}
+.recommended-items-component > .results-section .section-container .item .image {
+    width: 100%;
+    margin: 10px 0px 20px 0px;
+    position: relative;
+    text-align: center;
+}
+.recommended-items-component > .results-section .section-container .item .image > img{
+    width: 80%;
+}
+.recommended-items-component > .results-section .section-container .item > iframe {
+    margin-top: auto;
+}
+
+/* END recommended items*/
+
+/* Styles for recommeneded genres */
+.recommended-genres-component {
+    width: 590px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.recommended-genres-component .genres-item {
+    margin: 0px 15px;
+    border: transparent;
+    background: var(--terciary-color);;
+    color: #fff;
+    border-radius: 0px;
+    padding: 0px 5px;
+    height: 30px;
+    width: 26%;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: all .2s ease-in;
+    display: inline-flex;
+    justify-content: center;
+}
+.recommended-genres-component .genres-item:hover {
+    transform: scale(1.05);
+}
+.recommended-genres-component .genres-item > p {
+    margin: 4px 0px;
+}
+.recommended-genres-component .refresh-button {
+    margin: 4px 0px;
+    cursor: pointer;
+    width: 100%;
+}
+.recommended-genres-component .refresh-button > img {
+    width: 25px;
+    transition: transform 0.4s linear;
+}
+.recommended-genres-component .refresh-button > img.rotate {
+    transform: rotate(180deg);
+}
+/* END recommendedGenres*/
+
+/* STYLES for trendingItems component */
+.trending-items-component .results-section .section-title > h2{
+    color: var(--primary-color);
+    background: var(--secondary-color);
+    display: inline-block;
+    padding: 0px 10px;
+    margin: 0 auto;
+    text-align: center;
+}
+.trending-items-component > .results-section .section-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: flex-center;
+}
+
+/* Tracks and albums GRID LAYOUT*/
+.trending-items-component > .results-section .section-container .item {
+    display: flex;
+    flex-wrap: wrap;
+    width: 31%;
+    background: var(--secondary-color);
+    justify-content: center;
+    margin: 20px 10px;
+    cursor: pointer;
+    position: relative;
+    flex-direction: column;
+}
+.trending-items-component > .results-section .section-container .item .header {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.trending-items-component > .results-section .section-container .item .header > .icon {
+    width: 40px;
+    padding: 25px 5px 0px 36px;
+    height: 42px;
+}
+.trending-items-component > .results-section .section-container .item .header > .icon > img {
+    width: 45px;
+    margin-top: -5px;
+}
+.trending-items-component > .results-section .section-container .item .header > .info {
+    width: 70%;
+    display: grid;
+    margin-top: 5px;
+    align-items: center;
+}
+.trending-items-component > .results-section .section-container .item .header > .info > a:nth-child(1) {
+    width: 100%;
+    font-size: 20px;
+    font-family: 'Roboto Regular';
+    text-decoration: none;
+    color: var(--terciary-color);
+    margin: 15px 15px 0px 15px;
+}
+.trending-items-component > .results-section .section-container .item .header > .info > a:nth-child(2) {
+    width: 100%;
+    font-size: 18px;
+    font-family: 'Roboto Light';
+    text-decoration: none;
+    color: var(--terciary-color);
+    margin: 0px 15px 15px 15px;
+}
+.trending-items-component > .results-section .section-container .item .image {
+    width: 100%;
+    margin: 10px 0px 20px 0px;
+    position: relative;
+    text-align: center;
+}
+.trending-items-component > .results-section .section-container .item .image > img{
+    width: 80%;
+}
+.trending-items-component > .results-section .section-container .item > iframe {
+    margin-top: auto;
+}
+/*END styles for trendingItems component */
+
+/*Styles for header component */
+header {
+    width: 100%;
+    height: 70px;
+    max-height: 70px;
+    color: var(--secondary-color);
+    background: var(--terciary-color);
+  }
+  header > .header-content {
+      display: flex;
+      width: 70%;
+      justify-content: center;
+      margin: 0 auto;
+      align-items: center;
+      height: 100%;
+  }
+  header > .header-content > div {
+      width: 50%;
+  }
+  header > .header-content > .logo {
+    text-align: right;
+    margin-right: 3px;
+    width: 45%;
+  }
+  header > .header-content > .logo > img {
+    width: 40px;
+    margin-top: 12px;
+  }
+  header > .header-content > .app-name {
+    text-align: left;
+        margin-left: 3px;
+        width: 55%;
+  }
+  header > .header-content > .app-name h1 {
+    display: table-cell;
+    vertical-align: middle;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    font-family: 'Roboto Light';
+    color: var(--secondary-color);
+    letter-spacing: 2.5px;
+  }
+  header > .header-content > .app-name h1 > b {
+    font-family: 'Roboto Regular';
+  }
+/*END styles for header component */
+
+/*Styles styles for footer component */
+footer {
+    width: 100%;
+    height: 70px;
+    max-height: 70px;
+    color: var(--secondary-color);
+    background: var(--terciary-color);
+    clear: both;
+    position: relative;
+    margin-top: auto;
+  }
+  footer > .footer-content {
+      display: inline-flex;
+      width: 70%;
+      justify-content: center;
+      margin: 0 auto;
+      align-items: center;
+      height: 100%;
+  }
+  footer > .footer-content > p{
+      font-size: 18px;
+      padding: 0px 20px;
+  }
+/*END styles for footer component */
+
+/* MEDIA-QUERIES for RESPONSIVE CONTENT*/
+@media screen and (max-width: 450px) {
+    .main-container {
+        max-width: 90%;
+    }
+    .header-section {
+        height: 50px;
+    }
+    header > .header-content > .logo {
+        text-align: right;
+        margin-right: 3px;
+        width: 30%;
+    }
+    header > .header-content > .app-name {
+        text-align: left;
+        margin-left: 3px;
+        width: 70%;
+    }
+    header > .header-content > .logo > img {
+        width: 25px;
+        margin-top: 8px;
+    }
+    header > .header-content > .app-name h1 {
+        font-size: 20px;
+    }
+    .search-component > section {
+        width: 100%;
+        margin: 0px 0px;
+    }
+    .search-component > section > .search-width {
+        width: 100%;
+        display: inline;
+    }
+    .search-component .title-section h3 {
+        line-height: 1.2em;
+        font-size: 24px;
+        margin: 10px 0px;
+    }
+    .search-component > section > .search-width > .title-section {
+        margin: 5px 0px;
+    }
+    .search-component > section > .search-width > .search-input {
+        position: relative;
+    }
+    .search-component > section .search-input > input {
+        height: 40px;
+        width: 80%;
+        font-size: 20px;
+    }
+    input::placeholder {
+        font-size: 14px;
+    }
+    .search-component > section .search-input > .search-icon { 
+        width: 25px;
+    }
+    .recommended-genres-component { 
+        width: 100%;
+    }
+    .recommended-genres-component .genres-item {
+        margin: 0px 5px 10px 5px;
+        font-size: 13px;
+    }
+    .recommended-genres-component .genres-item > p {
+        margin: 4px 0px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .search-results-component > .results-section .section-container .top-artist,
+    .search-results-component > .results-section .section-container .other-artist {
+        width: 50%;
+    }
+    .search-results-component > .results-section .section-container .top-artist > .artist-img > img {
+        width: 100px;
+        height: 100px;
+    }
+    .search-results-component > .results-section .section-container .top-artist > .artist-name > a,
+    .search-results-component > .results-section .section-container .other-artist > .artist-name > a {
+        font-size: 20px;
+        font-family: 'Roboto Regular';
+    }
+    .search-results-component > .results-section .section-container .artist-item > .artist-followers > p {
+        font-size: 12px;
+    }
+    .search-results-component > .results-section .section-container .item {
+        width: 100%;
+    }
+    .search-results-component > .results-section .section-container .item .header > .icon > img {
+        width: 25px;
+    }
+    .search-results-component > .results-section .section-container .item .header > .info > a:nth-child(1) {
+        width: 90%;
+        font-size: 16px;
+        font-family: 'Roboto Regular';
+        text-decoration: none;
+        color: #fff;
+        margin: 15px 0px 5px 0px;
+    }
+    .search-results-component > .results-section .section-container .item .header > .info > a:nth-child(2) {
+        width: 90%;
+        font-size: 14px;
+        font-family: 'Roboto Light';
+        text-decoration: none;
+        color: #fff;
+        margin: 0px 0px 5px 0px;
+    }
+    .search-results-component > .results-section .section-container .item > iframe {
+        height: 64px;
+    }
+    .search-results-component .albums-section.results-section .section-container .item .header > .icon > img {
+        width: 32px;
+    }
+    .results-section .section-title {
+        font-size: 20px!important;
+    }
+    .recommended-items-component > .results-section .section-container .item {
+        width: 100%;
+        margin: 10px 0px;
+    }
+    .recommended-items-component > .results-section .section-container .item .header > .info > a:nth-child(1) {
+        width: 90%;
+        font-size: 18px;
+        font-family: 'Roboto Regular';
+        text-decoration: none;
+        color: #fff;
+        margin: 15px 0px 5px 0px;
+    }
+    .recommended-items-component > .results-section .section-container .item .header > .info > a:nth-child(2) {
+        width: 90%;
+        font-size: 16px;
+        font-family: 'Roboto Light';
+        text-decoration: none;
+        color: #fff;
+        margin: 0px 0px 5px 0px;
+    }
+    .recommended-items-component > .results-section .section-container .item > iframe {
+        height: 64px;
+    }
+    .trending-items-component > .results-section .section-container .item {
+        width: 100%;
+        margin: 10px 0px;
+    }
+    .trending-items-component > .results-section .section-container .item .header > .info > a:nth-child(1) {
+        width: 90%;
+        font-size: 18px;
+        text-decoration: none;
+        color: var(--terciary-color);
+        margin: 15px 0px 5px 0px;
+    }
+    .trending-items-component > .results-section .section-container .item .header > .info > a:nth-child(2) {
+        width: 90%;
+        font-size: 16px;
+        text-decoration: none;
+        color: var(--terciary-color);
+        margin: 0px 0px 5px 0px;
+    }
+    .trending-items-component > .results-section .section-container .item .header > .icon {
+        width: 40px;
+        padding: 25px 15px 0px 26px;
+        height: 42px;
+    }
+}
+@media (min-width: 451px) and (max-width: 580px) {
+    .main-container {
+        max-width: 90%;
+    }
+    .header-section {
+        height: 50px;
+    }
+    header > .header-content > .logo {
+        text-align: right;
+        margin-right: 3px;
+        width: 30%;
+    }
+    header > .header-content > .app-name {
+        text-align: left;
+        margin-left: 3px;
+        width: 70%;
+    }
+    header > .header-content > .logo > img {
+        width: 25px;
+        margin-top: 8px;
+    }
+    header > .header-content > .app-name h1 {
+        font-size: 20px;
+    }
+    .search-component > section {
+        width: 100%;
+        margin: 0px 0px;
+    }
+    .search-component > section > .search-width {
+        width: 100%;
+        display: inline;
+    }
+    .search-component .title-section h3 {
+        line-height: 1.2em;
+        font-size: 24px;
+        margin: 10px 0px;
+    }
+    .search-component > section > .search-width > .title-section {
+        margin: 5px 0px;
+    }
+    .search-component > section > .search-width > .search-input {
+        position: relative;
+    }
+    .search-component > section .search-input > input {
+        height: 40px;
+        width: 80%;
+        font-size: 20px;
+    }
+    input::placeholder {
+        font-size: 14px;
+    }
+    .search-component > section .search-input > .search-icon { 
+        width: 25px;
+    }
+    .recommended-genres-component { 
+        width: 100%;
+    }
+    .recommended-genres-component .genres-item {
+        margin: 0px 5px 10px 5px;
+        font-size: 13px;
+        width: 28%;
+    }
+    .recommended-genres-component .genres-item > p {
+        margin: 4px 0px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .search-results-component > .results-section .section-container .top-artist,
+    .search-results-component > .results-section .section-container .other-artist {
+        width: 50%;
+    }
+    .search-results-component > .results-section .section-container .top-artist > .artist-img > img,
+    .search-results-component > .results-section .section-container .other-artist > .artist-img > img {
+        width: 150px;
+        height: 150px;
+    }
+    .search-results-component > .results-section .section-container .top-artist > .artist-name > a,
+    .search-results-component > .results-section .section-container .other-artist > .artist-name > a {
+        font-size: 20px;
+        font-family: 'Roboto Regular';
+    }
+    .search-results-component > .results-section .section-container .artist-item > .artist-followers > p {
+        font-size: 12px;
+    }
+    .search-results-component > .results-section .section-container .item {
+        width: 45%;
+        margin: 20px 10px;
+    }
+    .search-results-component > .results-section .section-container .item .header > .icon > img {
+        width: 25px;
+    }
+    .search-results-component > .results-section .section-container .item .header > .icon {
+        width: 28px;
+        padding: 25px 10px 0px 15px;
+    }
+    .search-results-component > .results-section .section-container .item .header > .info > a:nth-child(1) {
+        width: 90%;
+        font-size: 18px;
+        font-family: 'Roboto Regular';
+        text-decoration: none;
+        color: #fff;
+        margin: 15px 0px 5px 0px;
+    }
+    .search-results-component > .results-section .section-container .item .header > .info > a:nth-child(2) {
+        width: 90%;
+        font-size: 16px;
+        font-family: 'Roboto Light';
+        text-decoration: none;
+        color: #fff;
+        margin: 0px 0px 5px 0px;
+    }
+    .search-results-component > .results-section .section-container .item > iframe {
+        height: 64px;
+    }
+    .search-results-component .albums-section.results-section .section-container .item .header > .icon > img {
+        width: 32px;
+    }
+    .results-section .section-title {
+        font-size: 20px!important;
+    }
+    .recommended-items-component > .results-section .section-container .item {
+        width: 100%;
+        margin: 10px 0px;
+    }
+    .recommended-items-component > .results-section .section-container .item .header > .info > a:nth-child(1) {
+        width: 90%;
+        font-size: 18px;
+        font-family: 'Roboto Regular';
+        text-decoration: none;
+        color: #fff;
+        margin: 15px 0px 5px 0px;
+    }
+    .recommended-items-component > .results-section .section-container .item .header > .info > a:nth-child(2) {
+        width: 90%;
+        font-size: 16px;
+        font-family: 'Roboto Light';
+        text-decoration: none;
+        color: #fff;
+        margin: 0px 0px 5px 0px;
+    }
+    .recommended-items-component > .results-section .section-container .item > iframe {
+        height: 64px;
+    }
+    .trending-items-component > .results-section .section-container .item {
+        width: 48%;
+        margin: 10px 0px 10px 8px;
+    }
+    .trending-items-component > .results-section .section-container .item .header > .info > a:nth-child(1) {
+        width: 90%;
+        font-size: 18px;
+        text-decoration: none;
+        color: var(--terciary-color);
+        margin: 15px 0px 5px 0px;
+    }
+    .trending-items-component > .results-section .section-container .item .header > .icon > img {
+        width: 40px;
+    }
+    .trending-items-component > .results-section .section-container .item .header > .info > a:nth-child(2) {
+        width: 90%;
+        font-size: 16px;
+        text-decoration: none;
+        color: var(--terciary-color);
+        margin: 0px 0px 5px 0px;
+    }
+    .trending-items-component > .results-section .section-container .item .header > .icon {
+        width: 40px;
+        padding: 25px 15px 0px 15px;
+        height: 42px;
+    }
+    .trending-items-component > .results-section .section-container .item .header > .info {
+        width: 61%;
+    }
+}
+@media (min-width: 581px) and (max-width: 768px) {
+    .main-container {
+        max-width: 90%;
+    }
+    header > .header-content > .logo {
+        text-align: right;
+        margin-right: 3px;
+        width: 30%;
+    }
+    .search-component > section {
+        width: 100%;
+        margin: 0px 0px;
+    }
+    .search-component > section > .search-width {
+        width: 80%;
+        display: inline;
+    }
+    .search-component .title-section h3 {
+        line-height: 1.2em;
+        font-size: 32px;
+        margin: 10px 0px;
+    }
+    .search-component > section > .search-width > .title-section {
+        margin: 5px 0px;
+    }
+    .search-component > section > .search-width > .search-input {
+        position: relative;
+    }
+    .search-component > section .search-input > input {
+        height: 40px;
+        width: 90%;
+        font-size: 20px;
+    }
+    input::placeholder {
+        font-size: 20px;
+    }
+    .search-component > section .search-input > .search-icon { 
+        width: 25px;
+    }
+    .recommended-genres-component { 
+        width: 100%;
+    }
+    .recommended-genres-component .genres-item {
+        margin: 0px 5px 10px 5px;
+        font-size: 13px;
+        width: 29%;
+    }
+    .recommended-genres-component .genres-item > p {
+        margin: 4px 0px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .search-results-component > .results-section .section-container .top-artist,
+    .search-results-component > .results-section .section-container .other-artist {
+        width: 33%;
+    }
+    .search-results-component > .results-section .section-container .top-artist > .artist-img > img,
+    .search-results-component > .results-section .section-container .other-artist > .artist-img > img {
+        width: 150px;
+        height: 150px;
+    }
+    .search-results-component > .results-section .section-container .top-artist > .artist-name > a,
+    .search-results-component > .results-section .section-container .other-artist > .artist-name > a {
+        font-size: 23px;
+        font-family: 'Roboto Regular';
+    }
+    .search-results-component > .results-section .section-container .artist-item > .artist-followers > p {
+        font-size: 16px;
+    }
+    .search-results-component > .results-section .section-container .item {
+        width: 47%;
+        margin: 20px 10px;
+    }
+    .search-results-component > .results-section .section-container .item .header > .icon > img {
+        width: 30px;
+    }
+    .search-results-component > .results-section .section-container .item .header > .info > a:nth-child(1) {
+        width: 90%;
+        font-size: 22px;
+        font-family: 'Roboto Regular';
+        text-decoration: none;
+        color: #fff;
+        margin: 15px 0px 5px 0px;
+    }
+    .search-results-component > .results-section .section-container .item .header > .info > a:nth-child(2) {
+        width: 90%;
+        font-size: 18px;
+        font-family: 'Roboto Light';
+        text-decoration: none;
+        color: #fff;
+        margin: 0px 0px 5px 0px;
+    }
+    .search-results-component > .results-section .section-container .item > iframe {
+        height: 64px;
+    }
+    .search-results-component .albums-section.results-section .section-container .item .header > .icon > img {
+        width: 40px;
+    }
+    .search-results-component > .results-section .section-container .item .header > .icon {
+        padding: 25px 10px 0px 30px;
+    }
+    .results-section .section-title {
+        font-size: 28px!important;
+    }
+    .recommended-items-component > .results-section .section-container .item {
+        width: 47%;
+        margin: 10px 0px 10px 20px;
+    }
+    .recommended-items-component > .results-section .section-container .item .header > .info > a:nth-child(1) {
+        width: 90%;
+        font-size: 22px;
+        font-family: 'Roboto Regular';
+        text-decoration: none;
+        color: #fff;
+        margin: 15px 0px 5px 0px;
+    }
+    .recommended-items-component > .results-section .section-container .item .header > .info > a:nth-child(2) {
+        width: 90%;
+        font-size: 18px;
+        font-family: 'Roboto Light';
+        text-decoration: none;
+        color: #fff;
+        margin: 0px 0px 5px 0px;
+    }
+    .recommended-items-component > .results-section .section-container .item > iframe {
+        height: 64px;
+    }
+    .trending-items-component > .results-section .section-container .item {
+        width: 48%;
+        margin: 10px 0px 10px 8px;
+    }
+    .trending-items-component > .results-section .section-container .item .header > .info > a:nth-child(1) {
+        width: 90%;
+        font-size: 22px;
+        text-decoration: none;
+        color: var(--terciary-color);
+        margin: 15px 0px 5px 0px;
+    }
+    .trending-items-component > .results-section .section-container .item .header > .icon > img {
+        width: 40px;
+    }
+    .trending-items-component > .results-section .section-container .item .header > .info > a:nth-child(2) {
+        width: 90%;
+        font-size: 18px;
+        text-decoration: none;
+        color: var(--terciary-color);
+        margin: 0px 0px 5px 0px;
+    }
+    .trending-items-component > .results-section .section-container .item .header > .icon {
+        width: 40px;
+        padding: 25px 15px 0px 35px;
+        height: 42px;
+    }
+    .trending-items-component > .results-section .section-container .item .header > .info {
+        width: 61%;
+    }
+}
+@media (min-width: 769px) and (max-width: 833px) {
+    .recommended-genres-component .genres-item {
+        width: 29%!important;
+    }
+}
+@media (min-width: 769px) and (max-width: 1180px) {
+    .main-container {
+        max-width: 90%;
+    }
+    header > .header-content > .logo {
+        text-align: right;
+        margin-right: 3px;
+        width: 30%;
+    }
+    .search-component > section {
+        width: 100%;
+        margin: 0px 0px;
+    }
+    .search-component > section > .search-width {
+        width: 80%;
+        display: inline;
+    }
+    .search-component .title-section h3 {
+        line-height: 1.2em;
+        font-size: 32px;
+        margin: 10px 0px;
+    }
+    .search-component > section > .search-width > .title-section {
+        margin: 5px 0px;
+    }
+    .search-component > section > .search-width > .search-input {
+        position: relative;
+    }
+    .search-component > section .search-input > input {
+        height: 40px;
+        width: 90%;
+        font-size: 20px;
+    }
+    input::placeholder {
+        font-size: 20px;
+    }
+    .search-component > section .search-input > .search-icon { 
+        width: 25px;
+    }
+    .recommended-genres-component { 
+        width: 100%;
+    }
+    .recommended-genres-component .genres-item {
+        margin: 0px 5px 10px 5px;
+        font-size: 16px;
+        width: 30%;
+    }
+    .recommended-genres-component .genres-item > p {
+        margin: 4px 0px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .search-results-component > .results-section .section-container .top-artist > .artist-name > a,
+    .search-results-component > .results-section .section-container .other-artist > .artist-name > a {
+        font-size: 30px;
+        font-family: 'Roboto Regular';
+    }
+    .search-results-component > .results-section .section-container .artist-item > .artist-followers > p {
+        font-size: 18px;
+    }
+    .search-results-component > .results-section .section-container .item {
+        width: 47%;
+        margin: 20px 10px;
+    }
+    .search-results-component > .results-section .section-container .item .header > .icon > img {
+        width: 30px;
+    }
+    .search-results-component > .results-section .section-container .item .header > .info > a:nth-child(1) {
+        width: 90%;
+        font-size: 22px;
+        font-family: 'Roboto Regular';
+        text-decoration: none;
+        color: #fff;
+        margin: 15px 0px 5px 0px;
+    }
+    .search-results-component > .results-section .section-container .item .header > .info > a:nth-child(2) {
+        width: 90%;
+        font-size: 18px;
+        font-family: 'Roboto Light';
+        text-decoration: none;
+        color: #fff;
+        margin: 0px 0px 5px 0px;
+    }
+    .search-results-component > .results-section .section-container .item > iframe {
+        height: 64px;
+    }
+    .search-results-component .albums-section.results-section .section-container .item .header > .icon > img {
+        width: 40px;
+    }
+    .search-results-component > .results-section .section-container .item .header > .icon {
+        padding: 25px 10px 0px 30px;
+    }
+    .results-section .section-title {
+        font-size: 28px!important;
+    }
+    .recommended-items-component > .results-section .section-container .item {
+        width: 47%;
+        margin: 10px 0px 10px 20px;
+    }
+    .recommended-items-component > .results-section .section-container .item .header > .info > a:nth-child(1) {
+        width: 90%;
+        font-size: 22px;
+        font-family: 'Roboto Regular';
+        text-decoration: none;
+        color: #fff;
+        margin: 15px 0px 5px 0px;
+    }
+    .recommended-items-component > .results-section .section-container .item .header > .info > a:nth-child(2) {
+        width: 90%;
+        font-size: 18px;
+        font-family: 'Roboto Light';
+        text-decoration: none;
+        color: #fff;
+        margin: 0px 0px 5px 0px;
+    }
+    .recommended-items-component > .results-section .section-container .item > iframe {
+        height: 64px;
+    }
+    .trending-items-component > .results-section .section-container .item {
+        width: 48%;
+        margin: 10px 0px 10px 8px;
+    }
+    .trending-items-component > .results-section .section-container .item .header > .info > a:nth-child(1) {
+        width: 90%;
+        font-size: 24px;
+        text-decoration: none;
+        color: var(--terciary-color);
+        margin: 15px 0px 5px 0px;
+    }
+    .trending-items-component > .results-section .section-container .item .header > .icon > img {
+        width: 40px;
+    }
+    .trending-items-component > .results-section .section-container .item .header > .info > a:nth-child(2) {
+        width: 90%;
+        font-size: 22px;
+        text-decoration: none;
+        color: var(--terciary-color);
+        margin: 0px 0px 5px 0px;
+    }
+    .trending-items-component > .results-section .section-container .item .header > .icon {
+        width: 40px;
+        padding: 25px 15px 0px 35px;
+        height: 42px;
+    }
+    .trending-items-component > .results-section .section-container .item .header > .info {
+        width: 61%;
+    }
+}
+/* END MEDIA QUERIES */
