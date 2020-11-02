@@ -74,15 +74,9 @@
 
 export default {
   props: {
-      artists: {
-          type: Object
-      },
-      tracks: {
-          type: Object
-      },
-      albums: {
-          type: Object
-      }
+      artists: Object,
+      tracks: Object,
+      albums: Object
   },
   methods: {
       openLink: function(link){

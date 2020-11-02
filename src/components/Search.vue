@@ -133,7 +133,8 @@ export default {
   emits: [
       'search-results',
       'search-recommendations',
-      'no-show-recomendations'
+      'no-show-recomendations',
+      'no-show-results'
   ]
 }
 </script>
