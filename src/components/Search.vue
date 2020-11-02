@@ -7,7 +7,7 @@
             </div>
             <div class="search-input">
                 <img @click="searchApi(this.query)" class="search-icon" src="../assets/icons/search-icon.png">
-                <input type="search" v-model="query" @focus="onFocus" @keyup.enter="enteredQuery()" placeholder="Search artists, tracks or albums">
+                <input type="search" v-model="query" @focus="this.onFocus" @keyup.enter="this.enteredQuery()" placeholder="Search artists, tracks or albums">
             </div>
             <div class="recommended-genres">
                 <transition name="block">
@@ -34,7 +34,11 @@ export default {
   methods: {
       enteredQuery(){
           //Test method
-          console.log('Searched query: ' + this.query);
+          console.log('Llegamos!');
+          if (this.query.length >= 2) {              
+            this.searchApi(this.query)
+            this.show_genres = false
+          }
       },
       searchApi(event){
           // Calling Spotify API for the first time in order to get the access_token
@@ -125,8 +129,8 @@ export default {
       //make a request to de API, with a delay of 0.3s
       query:  debounce(function () {
           if (this.query.length >= 2) {              
-            this.searchApi(this.query);
-            this.show_genres = false;
+            // this.searchApi(this.query)
+            // this.show_genres = false
           }
       }, 300)
   },
